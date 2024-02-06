@@ -4,7 +4,6 @@ public class Chess {
     Object WhitePieces[];
     Object BlackPieces[];
     public Chess() {
-        WhitePieces = new Object[] {new Pawn()};
         black = false;
         Board = new int[8][8][2];
         for(int row = 0; row < Board.length; row++) {

@@ -5,9 +5,16 @@
 //import javax.imageio.ImageIO;
 
  class Piece {
-
-    public Piece() {
-        
-              
+    int color;
+    int x;
+    int y;
+    public Piece(int color, int x, int y) {
+        this.color = color;
+        this.x = x;
+        this.y = y;    
     }
+    //
+    public void Movement() {}
+
+
 }
