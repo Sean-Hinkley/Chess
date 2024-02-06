@@ -1,7 +1,7 @@
 public class Board {
     //Declare Variables
 
-    Piece[][] GameBoard;
+    Tile[][] GameBoard;
 
     int Player;
 
@@ -10,7 +10,7 @@ public class Board {
 
     public Board(int p) {
         Player = p;
-
-        
+        GameBoard = new Tile[8][8];
+        GameBoard[0][0] = new Tile(0,0,new WhitePawn(0, 0), false);
     }
 }
