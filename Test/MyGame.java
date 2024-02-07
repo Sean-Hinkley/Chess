@@ -13,28 +13,20 @@ import javax.imageio.ImageIO;
 
 public class MyGame extends Game  {
   public static final String TITLE = "MyGame";
-  public static final int SCREEN_WIDTH = 1000;
-  public static final int SCREEN_HEIGHT = 1000;
+  public static final int SCREEN_WIDTH = 1040;
+  public static final int SCREEN_HEIGHT = 1040 ;
 
   
   // declare variables here
-  Chess Game;
   int offsetX;
   int offsetY;
-  Image[][] ImgMap;
-  BufferedImage img;
-  Image f; 
-  int piece_clicked;
+  Board Game;
+
   public MyGame() {
     // initialize variables here
-    ImgMap = new Image[2][6];
-    offsetX = 100;
-    offsetY = 100;
-    Game = new Chess();
-    try {
-      img = ImageIO.read(new File("visual-starter-files\\Images\\Black\\Pawn.png"));
-      f = img.getScaledInstance(64, 64, Image.SCALE_DEFAULT);
-    } catch (IOException e) {}
+    offsetX = 0;
+    offsetY = 0;
+    Game = new Board(1);
   }
   
   public void update() {
@@ -42,20 +34,25 @@ public class MyGame extends Game  {
   }
   
   public void draw(Graphics pen) {
-    for(int row = 0; row < Game.Board.length; row++) {
-      for(int col = 0; col < Game.Board[row].length; col++) {
-        if(Game.Board[row][col][0]==1) {
-          pen.setColor(new Color(255,255,51));
-          pen.fillRect(row*64+offsetX, col*64+offsetY, 64, 64);
+    for(int row = 0; row < 8; row++) {
+      for(int col = 0; col < 8; col++) {
+        if(Game.GameBoard[row][col].color == 0) {
+          pen.setColor(Color.BLACK);
+          pen.fillRect((col*96)+offsetX, (row*96)+offsetY , 96, 96);
+
         }
-        if(Game.Board[row][col][0]==0) {
-          pen.setColor(new Color(255,100,100));
-          pen.fillRect(row*64+offsetX, col*64+offsetY, 64, 64);
+        if(Game.GameBoard[row][col].color == 1) {
+          pen.setColor(Color.WHITE);
+          pen.fillRect((col*96)+offsetX, (row*96)+offsetY , 96, 96);
+
         }
-        if(Game.Board[row][col][1]==1) {
-          pen.drawImage(f, (row*64)+offsetX, (col*64)+offsetY, null);
+        if(Game.GameBoard[row][col].onePiece!=null) {
+          pen.drawImage(Game.GameBoard[row][col].onePiece.img, row*96, col*96, null);
+
         }
       }
+
+      
     }
   }
       
@@ -70,15 +67,6 @@ public class MyGame extends Game  {
 
   @Override
   public void mouseClicked(MouseEvent ke) {
-    piece_clicked = 0;
-    int new_x = (ke.getX()-offsetX-8)/64;
-    int new_y = (ke.getY()-offsetY-32)/64;
-    System.out.println("X = : " + new_x);
-    System.out.println("Y = : " + new_y);
-
-    if(Game.Board[new_x][new_y][1]==1) {
-
-    } 
 
 
   }

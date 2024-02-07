@@ -1,7 +1,8 @@
+
 public class Tile {
 
     //initialize Variables
-    boolean col;
+    int color;
     int x;
     int y;
     Piece onePiece;
@@ -11,11 +12,11 @@ public class Tile {
     Tile Left;
     Tile Right;
     //declare variables
-    public Tile(int x, int y, Piece onTile, boolean color, Tile up, Tile Down, Tile Left, Tile Right) {
+    public Tile(int x, int y, Piece onTile, int color, Tile up, Tile Down, Tile Left, Tile Right) {
         this.x = x;
         this.y = y;
         onePiece = onTile;
-        col = color;
+        this.color = color;
         modifier = 0;
         this.up = up;
         this.Down = Down;
@@ -25,7 +26,10 @@ public class Tile {
     }
 
     public String toString() {
-        return "X" + x + " Y " + y;
+        if(color==1) {return "White";}
+        if(color==0) {return "Black";}
+
+        return null;
     }
 
 
