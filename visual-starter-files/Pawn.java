@@ -11,8 +11,8 @@ public class Pawn extends Piece{
     }
     public void Movement(Board board) {
         if(color==0) {
-            if() {
-
+            if(moved == false && (board.GameBoard[x+1][y] == null && board.GameBoard[x+2][y] == null)) {
+                
             }
             
         }

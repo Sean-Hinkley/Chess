@@ -10,16 +10,26 @@ public class Board {
 
     public Board(int p) {
         Player = p;
-        GameBoard = new Tile[8][8];
-        GameBoard[1][0] = new Tile(0,0,new Pawn(), false);
-        GameBoard[1][1] = new Tile(0,0,new Pawn(), false);
-        GameBoard[1][2] = new Tile(0,0,new Pawn(), false);
-        GameBoard[1][3] = new Tile(0,0,new Pawn(), false);
-        GameBoard[1][4] = new Tile(0,0,new Pawn(), false);
-        GameBoard[0][5] = new Tile(0,0,new Pawn(), false);
-        GameBoard[0][6] = new Tile(0,0,new Pawn(), false);
-        GameBoard[0][7] = new Tile(0,0,new Pawn(), false);
-        GameBoard[0][8] = new Tile(0,0,new Pawn(), false);
+
+        for(int row = 0; row < 8; row++) {
+            for(int col = 0; col < 8; col++) {
+                GameBoard[row][col] = new Tile(row,col,null,false,null,null,null,null);
+
+                if(row>0) {
+                    GameBoard[row][col].up = GameBoard[row-1][col];
+                    GameBoard[row-1][col].Down = GameBoard[row][col];
+                }
+                if(col>0) {
+                    GameBoard[row][col].Left = GameBoard[row][col-1];
+                    GameBoard[row][col-1].Right = GameBoard[row][col];
+                }
+                System.out.println(GameBoard[row][col].up);
+                System.out.println(GameBoard[row][col].Down);
+                System.out.println(GameBoard[row][col].Left);
+                System.out.println(GameBoard[row][col].Right + "\n\n\n\n\n\n");
+            }
+        }
+        
         
 
     }
