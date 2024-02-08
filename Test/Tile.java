@@ -26,10 +26,10 @@ public class Tile {
     }
 
     public String toString() {
-        if(color==1) {return "White";}
-        if(color==0) {return "Black";}
+        if(modifier == 1) {return "x: " + x + " y: " + y;}
+        if(modifier == 0) {return "x: " + x + " y: " + y;}
 
-        return null;
+        return "x: " + x + " y: " + y;
     }
 
 

@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
-import java.awt.Image;
+
 
 public class Board {
     //Declare Variables
@@ -54,9 +54,13 @@ public class Board {
         }
         img = null;
         try {
-            img = ImageIO.read(new File("Images/Black/Rook.png"));
+            img = ImageIO.read(new File("Images/Black/Pawn.png"));
             
-            GameBoard[3][2].onePiece = new Pawn(1, 3,2, img);
+            GameBoard[1][3].onePiece = new Pawn(0, 1,3, img);
+
+            img = ImageIO.read(new File("Images/White/Pawn.png"));
+            
+            GameBoard[2][2].onePiece = new Pawn(1, 2,2, img);
         } catch(IOException e) {}
         
 
@@ -72,5 +76,28 @@ public class Board {
         }
 
         return result;
+    }
+
+    public void unMod() {
+        for(int x = 0; x<8; x++) {
+            for(int y = 0; y<8; y++) {
+                if(GameBoard[x][y].modifier == 1) {
+                    GameBoard[x][y].modifier = 0;
+                }
+            }
+        }
+    }
+
+    public void MovePiece(Tile start, Tile dest) {
+        Tile st = start;
+        Tile de = dest;
+        Piece tmp = st.onePiece;
+        de.onePiece = tmp;
+        st.onePiece = null;
+
+
+        
+        tmp.x = de.x;
+        tmp.y = de.y;
     }
 }

@@ -1,11 +1,5 @@
 
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
 
 class Piece {
     int color;
@@ -20,7 +14,13 @@ class Piece {
 
     }
     //
-    public void Movement() {}
+    public void Movement(Board board) {}
+
+    public void spec(Board board) {
+
+    }
+
+
 
 
 }
