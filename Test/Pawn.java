@@ -3,14 +3,14 @@ import java.awt.image.BufferedImage;
 
 public class Pawn extends Piece{
     boolean moved;
-    public Pawn(int color, int x, int y, BufferedImage im) {
-        super(color, x, y, im);
+    public Pawn(int color, int x, int y, BufferedImage im, Board board) {
+        super(color, x, y, im,board);
         moved = false;
 
 
 
     }
-    public void Movement(Board board) {
+    public void Movement() {
         if(color==0) {
             
             

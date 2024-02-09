@@ -2,8 +2,8 @@ import java.awt.image.BufferedImage;
 
 public class Queen extends Piece{
 
-    public Queen(int color, int x, int y, BufferedImage im) {
-        super(color,x,y,im);
+    public Queen(int color, int x, int y, BufferedImage im,Board board) {
+        super(color,x,y,im,board);
     }
 
 
@@ -53,7 +53,7 @@ public class Queen extends Piece{
 
 
 
-    public void Movement(Board board) {
+    public void Movement() {
         int tmpx = 1;
         //int tmpy = 1;
         int[] f = new int[]{1,1,1,1,1,1,1,1};
@@ -149,7 +149,6 @@ public class Queen extends Piece{
                 }
                 if(f[7]==1) {
                     int n = math(y,tmpx);
-                    int n1 = -tmpx;
 
                     boolean g = check(x, n, board);
 

@@ -3,8 +3,8 @@ import java.awt.image.BufferedImage;
 public class Bishop extends Piece{
 
 
-    public Bishop(int color, int x, int y, BufferedImage im) {
-        super(color,x,y,im);
+    public Bishop(int color, int x, int y, BufferedImage im, Board board) {
+        super(color,x,y,im,board);
     }
 
     public int math(int val, int tmp) {
@@ -53,7 +53,7 @@ public class Bishop extends Piece{
 
 
 
-    public void Movement(Board board) {
+    public void Movement() {
         int tmpx = 1;
         //int tmpy = 1;
         int[] f = new int[]{1,1,1,1};

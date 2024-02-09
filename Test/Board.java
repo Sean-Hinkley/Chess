@@ -2,10 +2,8 @@
 //import java.awt.Font;
 
 //import java.awt.image.ImageObserver;
-import java.io.File;
-import java.io.IOException;
 import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
+
 
 
 public class Board {
@@ -53,15 +51,6 @@ public class Board {
             }
         }
         img = null;
-        try {
-            img = ImageIO.read(new File("Images/Black/Pawn.png"));
-            
-            GameBoard[1][3].onePiece = new Pawn(0, 1,3, img);
-
-            img = ImageIO.read(new File("Images/White/Pawn.png"));
-            
-            GameBoard[2][2].onePiece = new Pawn(1, 2,2, img);
-        } catch(IOException e) {}
         
 
     }
@@ -99,5 +88,27 @@ public class Board {
         
         tmp.x = de.x;
         tmp.y = de.y;
+    }
+
+    public boolean checkCheck(int x, int y, int color) {
+        for(int r = 0; r<8; r++) {
+            for(int c = 0; c<8; c++) {
+                if(GameBoard[r][c].onePiece != null) {
+                    if (color==1 && GameBoard[r][c].onePiece.color==0) {
+                        GameBoard[r][c].onePiece.Movement();
+                    }
+                }
+            }
+        }
+
+
+
+        return true;
+    }
+
+
+    public void newRook(int x, int y, int color) {
+        GameBoard[x][y].onePiece = new Rook();
+
     }
 }

@@ -6,6 +6,7 @@ class Piece {
     int x;
     int y;
     BufferedImage img;
+    Board board;
     public Piece(int color, int x, int y, BufferedImage im) {
         this.color = color;
         this.x = x;
@@ -14,9 +15,9 @@ class Piece {
 
     }
     //
-    public void Movement(Board board) {}
+    public void Movement() {}
 
-    public void spec(Board board) {
+    public void spec() {
 
     }
 

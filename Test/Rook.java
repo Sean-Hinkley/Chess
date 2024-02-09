@@ -53,7 +53,7 @@ public class Rook extends Piece {
 
 
 
-    public void Movement(Board board) {
+    public void Movement() {
         int tmpx = 1;
         int tmpy = 1;
         int[] f = new int[]{1,1,1,1};

@@ -36,6 +36,7 @@ public class MyGame extends Game  {
     offsetX = 100;
     offsetY = 100;
     Game = new Board(1);
+
     selected = false;
     try {
       White = new BufferedImage[] {ImageIO.read(new File("Images/White/Rook.png")),ImageIO.read(new File("Images/White/Knight.png")),ImageIO.read(new File("Images/White/Bishop.png")),ImageIO.read(new File("Images/White/Queen.png"))};
@@ -68,6 +69,7 @@ public class MyGame extends Game  {
 
         }
         if(Game.GameBoard[row][col].onePiece!=null) {
+          Game.GameBoard[row][col].onePiece.board = Game;
           pen.drawImage(Game.GameBoard[row][col].onePiece.img, (col*96)+offsetX, (row*96)+offsetY, null);
         
         }
@@ -106,7 +108,7 @@ public class MyGame extends Game  {
     if(pickx == -1 && picky== -1) {
       if(selected==false) {
         if(Game.GameBoard[x][y].onePiece!=null) {
-          Game.GameBoard[x][y].onePiece.Movement(Game);
+          Game.GameBoard[x][y].onePiece.Movement();
           selected = true;
           tmp = Game.GameBoard[x][y];
           System.out.println(tmp);
@@ -124,7 +126,7 @@ public class MyGame extends Game  {
           
           selected = false;
           Game.unMod();
-          Game.GameBoard[x][y].onePiece.spec(Game);
+          Game.GameBoard[x][y].onePiece.spec();
         }
       
 
@@ -141,25 +143,25 @@ public class MyGame extends Game  {
         System.out.println(x-picky);
         if(y-pickx==0) {
           System.out.println(true);
-          Game.GameBoard[picky][pickx].onePiece = new Rook(Game.GameBoard[x][y].onePiece.color, x, y, White[0]);
+          Game.GameBoard[picky][pickx].onePiece = new Rook(Game.GameBoard[x][y].onePiece.color, x, y, White[0],Game);
           Game.GameBoard[picky][pickx].modifier = 0;
           
         }
         if(y-pickx==2) {
           System.out.println("Harry");
-          Game.GameBoard[picky][pickx].onePiece = new Bishop(Game.GameBoard[picky][pickx].onePiece.color, picky, pickx, White[2]);
+          Game.GameBoard[picky][pickx].onePiece = new Bishop(Game.GameBoard[picky][pickx].onePiece.color, picky, pickx, White[2],Game);
           Game.GameBoard[picky][pickx].modifier = 0;
           
         }
         if(y-pickx==1) {
           System.out.println("Jerry");
-          Game.GameBoard[picky][pickx].onePiece = new Knight(Game.GameBoard[picky][pickx].onePiece.color, picky, pickx, White[1]);
+          Game.GameBoard[picky][pickx].onePiece = new Knight(Game.GameBoard[picky][pickx].onePiece.color, picky, pickx, White[1],Game);
           Game.GameBoard[picky][pickx].modifier = 0;
           
         }
         if(y-pickx==3) {
           System.out.println("Terry");
-          Game.GameBoard[picky][pickx].onePiece = new Queen(Game.GameBoard[picky][pickx].onePiece.color, picky, pickx, White[3]);
+          Game.GameBoard[picky][pickx].onePiece = new Queen(Game.GameBoard[picky][pickx].onePiece.color, picky, pickx, White[3],Game);
           Game.GameBoard[picky][pickx].modifier = 0;
           
         }

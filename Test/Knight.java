@@ -4,8 +4,8 @@ public class Knight extends Piece{
     
 
 
-    public Knight(int color, int x, int y, BufferedImage im) {
-        super(color,x,y,im);
+    public Knight(int color, int x, int y, BufferedImage im,Board board) {
+        super(color,x,y,im,board);
     }
 
 
@@ -26,7 +26,7 @@ public class Knight extends Piece{
         return true;
     }
 
-    public void Movement(Board board) {
+    public void Movement() {
         int lng = 2;
         int sort = 1;
 
