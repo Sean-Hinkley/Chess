@@ -137,12 +137,30 @@ public class MyGame extends Game  {
       }
     }
     if(pickx>=0 && picky>=0) {
-      if(Game.GameBoard[x][y].onePiece.color==1) {
-        System.out.println(y-pickx);
+      if(Game.GameBoard[picky][pickx].onePiece.color==1) {
+        System.out.println(x-picky);
         if(y-pickx==0) {
           System.out.println(true);
-          Game.GameBoard[x][y].onePiece = new Rook(Game.GameBoard[x][y].onePiece.color, pickx, picky, White[0]);
-          Game.GameBoard[x][y].modifier = 0;
+          Game.GameBoard[picky][pickx].onePiece = new Rook(Game.GameBoard[x][y].onePiece.color, x, y, White[0]);
+          Game.GameBoard[picky][pickx].modifier = 0;
+          
+        }
+        if(y-pickx==2) {
+          System.out.println("Harry");
+          Game.GameBoard[picky][pickx].onePiece = new Bishop(Game.GameBoard[picky][pickx].onePiece.color, picky, pickx, White[2]);
+          Game.GameBoard[picky][pickx].modifier = 0;
+          
+        }
+        if(y-pickx==1) {
+          System.out.println("Jerry");
+          Game.GameBoard[picky][pickx].onePiece = new Knight(Game.GameBoard[picky][pickx].onePiece.color, picky, pickx, White[1]);
+          Game.GameBoard[picky][pickx].modifier = 0;
+          
+        }
+        if(y-pickx==3) {
+          System.out.println("Terry");
+          Game.GameBoard[picky][pickx].onePiece = new Queen(Game.GameBoard[picky][pickx].onePiece.color, picky, pickx, White[3]);
+          Game.GameBoard[picky][pickx].modifier = 0;
           
         }
       }

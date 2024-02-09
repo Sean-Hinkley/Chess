@@ -1,9 +1,9 @@
 import java.awt.image.BufferedImage;
 
+public class Bishop extends Piece{
 
-public class Rook extends Piece {
-    
-    public Rook(int color, int x, int y, BufferedImage im) {
+
+    public Bishop(int color, int x, int y, BufferedImage im) {
         super(color,x,y,im);
     }
 
@@ -55,12 +55,13 @@ public class Rook extends Piece {
 
     public void Movement(Board board) {
         int tmpx = 1;
-        int tmpy = 1;
+        //int tmpy = 1;
         int[] f = new int[]{1,1,1,1};
         while(true) {
                 if(f[0]==1) {
                     int n = math(tmpx,x);
-                    boolean g = check(n, y, board);
+                    int n1 = math(tmpx,y);
+                    boolean g = check(n, n1, board);
 
                     if(g==false) {
                         f[0] = 0;
@@ -68,10 +69,12 @@ public class Rook extends Piece {
 
                     
                 }
+                
                 if(f[1]==1) {
                     int v = -tmpx;
                     int n = math(x,v);
-                    boolean g = check(n, y, board);
+                    int n1 = math(y,v);
+                    boolean g = check(n, n1, board);
 
                     if(g==false) {
                         f[1] = 0;
@@ -80,8 +83,11 @@ public class Rook extends Piece {
                     
                 }
                 if(f[2]==1) {
-                    int n = math(y,tmpy);
-                    boolean g = check(x, n, board);
+                    int n2 = -tmpx;
+                    int n = math(y,n2);
+                    
+                    int n1 = math(x, tmpx);
+                    boolean g = check(n1, n, board);
 
                     if(g==false) {
                         f[2] = 0;
@@ -90,8 +96,10 @@ public class Rook extends Piece {
                     
                 }
                 if(f[3]==1) {
-                    int n = math(y,tmpy*-1);
-                    boolean g = check(x, n, board);
+                    int n = math(y,tmpx);
+                    int n1 = -tmpx;
+                    int n2 = math(x,n1);
+                    boolean g = check(n2, n, board);
 
                     if(g==false) {
                         f[3] = 0;
@@ -102,7 +110,7 @@ public class Rook extends Piece {
                     
                 }
                 tmpx++;
-                tmpy++;
+                //tmpy++;
             
             if(f[0]==0 && f[1]==0 && f[2]==0 && f[3]==0) {
                 break;
@@ -110,5 +118,5 @@ public class Rook extends Piece {
         
         }
     }
-    public void spec(Board board) {}
+    
 }
